@@ -184,7 +184,7 @@ function money(n){return NF.format(Math.round(n||0))}
 function shortMoney(n){var a=Math.abs(n),s=n<0?"منفی ":"";if(a>=1e9)return s+trim(a/1e9)+" میلیارد تومان";if(a>=1e6)return s+trim(a/1e6)+" میلیون تومان";if(a>=1e3)return s+trim(a/1e3)+" هزار تومان";return s+fa(a)+" تومان";}
 function trim(x){return new Intl.NumberFormat("fa-IR",{maximumFractionDigits:x<10?2:1}).format(x)}
 function toLatin(s){return String(s||"").replace(/[۰-۹]/g,function(c){return c.charCodeAt(0)-1776}).replace(/[٠-٩]/g,function(c){return c.charCodeAt(0)-1632}).replace(/[٫]/g,".");}
-function parseNum(s){var t=toLatin(s).replace(/[,،\s]/g,"");if(t==="")return null;var n=Number(t);return isFinite(n)?n:null;}
+function parseNum(s){var t=toLatin(s).replace(/[,،\u066c\s]/g,"");if(t==="")return null;var n=Number(t);return isFinite(n)?n:null;}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})}
 
 /* ---------- vocab ---------- */
